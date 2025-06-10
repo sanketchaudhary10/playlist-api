@@ -36,7 +36,7 @@ def get_all_songs(request: Request, title: str):
     if res:
         return res[0]
 
-    return {"Error": "Song not found! Please enter the correct name again."}
+    return {"error": "Song not found! Please enter the correct name again."}
 
 @router.post("/rate")
 def rate_song(request: Request, title: str = Body(...), rating: int = Body(...)):

@@ -437,7 +437,7 @@
     "num_sections": 11,
     "num_segments": 903,
     "class": 1,
-    "star_rating": 3
+    "star_rating": null
   },
   {
     "Index": "20",
@@ -1053,7 +1053,7 @@
     "num_sections": 10,
     "num_segments": 755,
     "class": 1,
-    "star_rating": null
+    "star_rating": 5
   },
   {
     "Index": "48",
