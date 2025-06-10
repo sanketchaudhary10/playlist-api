@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Body
+from fastapi import APIRouter, Request, Body, Query
 from app.utils.normalize import save_normalized_data_to_file
 
 router = APIRouter()
@@ -8,8 +8,21 @@ def root():
     return {"message": "Playlist-api is running"}
 
 @router.get("/songs")
-def get_all_songs(request: Request):
-    return request.app.state.normalized_data
+def get_all_songs(request: Request, offset: int = Query(0, ge=0, description="Number of records to skip"),
+    limit: int = Query(10, ge=1, le=100, description="Number of records to return")):
+    
+    data = request.app.state.normalized_data
+    total = len(data)
+
+    paginated_data = data[offset : offset + limit]
+
+    return {
+        "total": total,
+        "count": len(paginated_data),
+        "offset": offset,
+        "limit": limit,
+        "data": paginated_data
+    }
 
 @router.get("/songs/{title}")
 def get_all_songs(request: Request, title: str):
