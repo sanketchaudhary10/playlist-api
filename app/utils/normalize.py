@@ -15,4 +15,6 @@ def normalize_playlist_json(file_path: str) -> List[Dict]:
     cols = ['Index'] + [col for col in df.columns if col != 'Index']
     df = df[cols]
 
+    df["star_rating"] = None
+
     return df.to_dict(orient="records")

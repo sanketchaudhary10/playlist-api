@@ -1,5 +1,4 @@
-from typing import Optional
-from fastapi import APIRouter, Request, Query
+from fastapi import APIRouter, Request, Body
 
 router = APIRouter()
 
@@ -24,6 +23,20 @@ def get_all_songs(request: Request, title: str):
         return res[0]
 
     return {"Error": "Song not found! Please enter the correct name again."}
+
+@router.post("/rate")
+def rate_song(request: Request, title: str = Body(...), rating: int = Body(...)):
+    data = request.app.state.normalized_data
+
+    if not (1 <= rating <= 5):
+        return {"error": "Rating must be between 1 and 5"}
+
+    for song in data:
+        if song["title"].lower() == title.lower():
+            song["star_rating"] = rating
+            return {"message": f"Rated '{title}' with {rating} stars."}
+
+    return {"error": f"Song '{title}' not found."}
 
 
 # @router.get("/songs{title}")
