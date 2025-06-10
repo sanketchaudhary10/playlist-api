@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Request, Body
+from app.utils.normalize import save_normalized_data_to_file
 
 router = APIRouter()
 
@@ -34,6 +35,7 @@ def rate_song(request: Request, title: str = Body(...), rating: int = Body(...))
     for song in data:
         if song["title"].lower() == title.lower():
             song["star_rating"] = rating
+            save_normalized_data_to_file(data)
             return {"message": f"Rated '{title}' with {rating} stars."}
 
     return {"error": f"Song '{title}' not found."}

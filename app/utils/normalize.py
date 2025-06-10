@@ -18,3 +18,7 @@ def normalize_playlist_json(file_path: str) -> List[Dict]:
     df["star_rating"] = None
 
     return df.to_dict(orient="records")
+
+def save_normalized_data_to_file(data: List[Dict], file_path: str = "data/normalized_output.json"):
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
