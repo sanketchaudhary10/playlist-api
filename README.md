@@ -26,6 +26,7 @@ A FastAPI-based web service to normalize and serve song playlist data from a JSO
 
 ## Project Structure:
 
+```plaintext
 playlist-api/
     ├── app/
     │ ├── main.py
