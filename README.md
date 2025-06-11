@@ -41,6 +41,7 @@ playlist-api/
     ├── .gitignore
     ├── pytest.ini
     └── README.md
+```
 
 ## Setup Instructions (Local)
 
