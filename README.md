@@ -48,7 +48,7 @@ playlist-api/
 ## 1. Cloning the Repository
 ```bash
 git clone https://github.com/sanketchaudhary10/playlist-api.git
-cd receipt-processor-api
+cd playlist-api
 ```
 
 ## 2. Create a virtual environment and install dependencies
